@@ -1,16 +1,37 @@
-import { Text, View } from "react-native";
+import { Text, View, ScrollView, Image, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import images from "@/constants/images";
+import icons from "@/constants/icons";
 
 const SignIn = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center", 
-        alignItems: "center",
-      }}
-    >
-      <Text>Sign In Screen</Text>
-    </View>
+    <SafeAreaView className="h-full bg-white">
+      <View className="h-full">
+          <Image source={images.onboarding} className="w-full h-4/6" resizeMode="contain" />
+
+          <View className="px-10">
+            <Text className="text-base text-center uppercase font-rubik text-black-200">
+                Welcome to ReState
+            </Text>
+            <Text className="text-center text-3xl font-rubik-bold text-black-300 mt-1">
+                Lets Get You Closer to {"\n"}
+                <Text className="text-primary-300">Your Ideal Home</Text>
+            </Text>
+            <Text className="text-lg font-rubik text-black-200 text-center mt-6">
+                Login to your account
+            </Text>
+            <TouchableOpacity onPress={() => {}} className="bg-white shadow-md shadow-zinc-300 rounded-full mt-5 py-4 px-6 flex-row items-center justify-center space-x-3">
+                <Image
+                    source={icons.google}
+                    className="w-5 h-5"
+                    resizeMode="contain"
+                />
+                <Text className="text-black-200 font-rubik px-2">Continue with Google</Text>
+            </TouchableOpacity>
+          </View>
+      </View>
+    </SafeAreaView>
   );
 }
 

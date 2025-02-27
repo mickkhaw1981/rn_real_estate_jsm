@@ -1,5 +1,5 @@
-import { icons } from "./assets/icons"; 
-import { images } from "../assets/images";
+import icons from "./icons";
+import images from "./images";
 
 export const cards = [
   {
