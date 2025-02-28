@@ -1,10 +1,29 @@
-import { Text, View, ScrollView, Image, TouchableOpacity } from "react-native";
+import { Text, View, ScrollView, Image, TouchableOpacity, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import images from "@/constants/images";
 import icons from "@/constants/icons";
+import { login } from "@/lib/appwrite";
+import { useGlobalContext } from "@/lib/global-provider";
+import { Redirect } from "expo-router";
 
 const SignIn = () => {
+    const { refetch, loading, isLogged } = useGlobalContext();
+
+    // if not loading and logged in redirect to home
+    if (!loading && isLogged) {
+        return <Redirect href="/" />;
+    }
+
+  const handleSignIn = async () => {
+    const result = await login();
+    if (result) {
+      refetch();
+    } else {
+      Alert.alert("Sign in failed");
+    }
+  };
+
   return (
     <SafeAreaView className="h-full bg-white">
       <View className="h-full">
@@ -21,7 +40,7 @@ const SignIn = () => {
             <Text className="text-lg font-rubik text-black-200 text-center mt-6">
                 Login to your account
             </Text>
-            <TouchableOpacity onPress={() => {}} className="bg-white shadow-md shadow-zinc-300 rounded-full mt-5 py-4 px-6 flex-row items-center justify-center space-x-3">
+            <TouchableOpacity onPress={handleSignIn} className="bg-white shadow-md shadow-zinc-300 rounded-full mt-5 py-4 px-6 flex-row items-center justify-center space-x-3">
                 <Image
                     source={icons.google}
                     className="w-5 h-5"

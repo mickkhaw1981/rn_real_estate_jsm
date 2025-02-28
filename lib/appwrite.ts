@@ -78,24 +78,24 @@ import {
     }
   }
   
-  // export async function getCurrentUser() {
-  //   try {
-  //     const result = await account.get();
-  //     if (result.$id) {
-  //       const userAvatar = avatar.getInitials(result.name);
+  export async function getCurrentUser() {
+    try {
+      const result = await account.get();
+      if (result.$id) {
+        const userAvatar = avatar.getInitials(result.name);
   
-  //       return {
-  //         ...result,
-  //         avatar: userAvatar.toString(),
-  //       };
-  //     }
+        return {
+          ...result,
+          avatar: userAvatar.toString(),
+        };
+      }
   
-  //     return null;
-  //   } catch (error) {
-  //     console.log(error);
-  //     return null;
-  //   }
-  // }
+      return null;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
   
   // export async function getLatestProperties() {
   //   try {
