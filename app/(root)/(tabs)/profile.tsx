@@ -23,6 +23,7 @@ import {
     showArrow?: boolean;
   }
   
+  // Component for the settings item. Could export this into components folder
   const SettingsItem = ({
     icon,
     title,
